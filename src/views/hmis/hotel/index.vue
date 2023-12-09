@@ -138,18 +138,18 @@
         </el-row>
       </template>
 
-      <el-table v-loading="loading" :data="hotelList" @selection-change="handleSelectionChange">
+      <el-table v-loading="loading" :data="hotelList" @selection-change="handleSelectionChange" >
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="酒店编号" align="center" prop="hotelId" v-if="false" />
-        <el-table-column label="酒店名称" align="center" prop="hotelName" />
-        <el-table-column label="英文名" align="center" prop="hotelNameEn" />
+        <el-table-column label="酒店名称" align="center" prop="hotelName" :show-overflow-tooltip="true"/>
+        <el-table-column label="英文名" align="center" prop="hotelNameEn" :show-overflow-tooltip="true"/>
         <el-table-column label="城市名称" align="center" prop="cityName" />
         <el-table-column label="星级(1/2/3/4/5)" align="center" prop="star">
           <template #default="scope">
             <dict-tag :options="star_type" :value="scope.row.star"/>
           </template>
         </el-table-column>
-        <el-table-column label="电话" align="center" prop="hotelPhone" />
+        <el-table-column label="电话" align="center" prop="hotelPhone" width="180" />
         <el-table-column label="开业时间" align="center" prop="openingTime" width="180">
           <template #default="scope">
             <span>{{ parseTime(scope.row.openingTime, '{y}-{m}-{d}') }}</span>
@@ -169,7 +169,7 @@
           </template>
         </el-table-column>
         <el-table-column label="酒店设施列表" align="center" prop="facilities" />
-        <el-table-column label="酒店地址" align="center" prop="address" />
+        <el-table-column label="酒店地址" align="center" prop="address" :show-overflow-tooltip="true" />
         <el-table-column label="酒店英文地址" align="center" prop="addressEn" />
         <el-table-column label="高德经度" align="center" prop="gaodeLat" />
         <el-table-column label="高德维度" align="center" prop="gaodeLon" />
