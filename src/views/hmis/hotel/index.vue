@@ -6,13 +6,13 @@
           <el-form-item label="酒店名称" prop="hotelName">
             <el-input v-model="queryParams.hotelName" placeholder="请输入酒店名称" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
-          <el-form-item label="英文名" prop="hotelNameEn">
+          <!--<el-form-item label="英文名" prop="hotelNameEn">
             <el-input v-model="queryParams.hotelNameEn" placeholder="请输入英文名" clearable style="width: 240px" @keyup.enter="handleQuery" />
-          </el-form-item>
+          </el-form-item>-->
           <el-form-item label="城市名称" prop="cityName">
             <el-input v-model="queryParams.cityName" placeholder="请输入城市名称" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
-          <el-form-item label="星级(1/2/3/4/5)" prop="star">
+          <!--<el-form-item label="星级(1/2/3/4/5)" prop="star">
             <el-select v-model="queryParams.star" placeholder="请选择星级(1/2/3/4/5)" clearable>
               <el-option
                 v-for="dict in star_type"
@@ -21,11 +21,11 @@
                 :value="dict.value"
               />
             </el-select>
-          </el-form-item>
+          </el-form-item>-->
           <el-form-item label="电话" prop="hotelPhone">
             <el-input v-model="queryParams.hotelPhone" placeholder="请输入电话" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
-          <el-form-item label="开业时间" style="width: 308px">
+          <!--<el-form-item label="开业时间" style="width: 308px">
             <el-date-picker
                 v-model="dateRangeOpeningTime"
                 value-format="YYYY-MM-DD HH:mm:ss"
@@ -46,8 +46,8 @@
                 end-placeholder="结束日期"
                 :default-time="[new Date(2000, 1, 1, 0, 0, 0), new Date(2000, 1, 1, 23, 59, 59)]"
             />
-          </el-form-item>
-          <el-form-item label="酒店介绍" prop="introduction">
+          </el-form-item>-->
+          <!--<el-form-item label="酒店介绍" prop="introduction">
             <el-input v-model="queryParams.introduction" placeholder="请输入酒店介绍" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
           <el-form-item label="取消政策" prop="canclePolicy">
@@ -55,11 +55,11 @@
           </el-form-item>
           <el-form-item label="酒店设施列表" prop="facilities">
             <el-input v-model="queryParams.facilities" placeholder="请输入酒店设施列表" clearable style="width: 240px" @keyup.enter="handleQuery" />
-          </el-form-item>
+          </el-form-item>-->
           <el-form-item label="酒店地址" prop="address">
             <el-input v-model="queryParams.address" placeholder="请输入酒店地址" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
-          <el-form-item label="酒店英文地址" prop="addressEn">
+          <!--<el-form-item label="酒店英文地址" prop="addressEn">
             <el-input v-model="queryParams.addressEn" placeholder="请输入酒店英文地址" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
           <el-form-item label="高德经度" prop="gaodeLat">
@@ -95,8 +95,8 @@
                 end-placeholder="结束日期"
                 :default-time="[new Date(2000, 1, 1, 0, 0, 0), new Date(2000, 1, 1, 23, 59, 59)]"
             />
-          </el-form-item>
-          <el-form-item label="谷歌经度" prop="googleLat">
+          </el-form-item>-->
+          <!--<el-form-item label="谷歌经度" prop="googleLat">
             <el-input v-model="queryParams.googleLat" placeholder="请输入谷歌经度" clearable style="width: 240px" @keyup.enter="handleQuery" />
           </el-form-item>
           <el-form-item label="谷歌维度" prop="googleLon">
@@ -110,7 +110,7 @@
           </el-form-item>
           <el-form-item label="目的地标签" prop="destinationLabel">
             <el-input v-model="queryParams.destinationLabel" placeholder="请输入目的地标签" clearable style="width: 240px" @keyup.enter="handleQuery" />
-          </el-form-item>
+          </el-form-item>-->
           <el-form-item>
             <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
             <el-button icon="Refresh" @click="resetQuery">重置</el-button>
@@ -141,16 +141,17 @@
       <el-table v-loading="loading" :data="hotelList" @selection-change="handleSelectionChange" >
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="酒店编号" align="center" prop="hotelId" v-if="false" />
-        <el-table-column label="酒店名称" align="center" prop="hotelName" :show-overflow-tooltip="true"/>
-        <el-table-column label="英文名" align="center" prop="hotelNameEn" :show-overflow-tooltip="true"/>
         <el-table-column label="城市名称" align="center" prop="cityName" />
-        <el-table-column label="星级(1/2/3/4/5)" align="center" prop="star">
+        <el-table-column label="酒店地址" align="center" prop="address" :show-overflow-tooltip="true" />
+        <el-table-column label="酒店名称" align="center" prop="hotelName" :show-overflow-tooltip="true"/>
+        <!--<el-table-column label="英文名" align="center" prop="hotelNameEn" :show-overflow-tooltip="true"/>-->
+        <!--<el-table-column label="星级(1/2/3/4/5)" align="center" prop="star">
           <template #default="scope">
             <dict-tag :options="star_type" :value="scope.row.star"/>
           </template>
-        </el-table-column>
+        </el-table-column>-->
         <el-table-column label="电话" align="center" prop="hotelPhone" width="180" />
-        <el-table-column label="开业时间" align="center" prop="openingTime" width="180">
+        <!--<el-table-column label="开业时间" align="center" prop="openingTime" width="180">
           <template #default="scope">
             <span>{{ parseTime(scope.row.openingTime, '{y}-{m}-{d}') }}</span>
           </template>
@@ -160,17 +161,16 @@
             <span>{{ parseTime(scope.row.decorateTime, '{y}-{m}-{d}') }}</span>
           </template>
         </el-table-column>
-        <!-- 缩略 -->
-        <!--<el-table-column label="酒店介绍" align="center" prop="introduction" :show-overflow-tooltip="true" />-->
-        <el-table-column label="取消政策" align="center" prop="canclePolicy" />
+        &lt;!&ndash; 缩略 &ndash;&gt;
+        &lt;!&ndash;<el-table-column label="酒店介绍" align="center" prop="introduction" :show-overflow-tooltip="true" />&ndash;&gt;
+        <el-table-column label="取消政策" align="center" prop="canclePolicy" />-->
         <el-table-column label="支持的信用卡" align="center" prop="creditCards">
           <template #default="scope">
             <dict-tag :options="credit_card_type" :value="scope.row.creditCards ? scope.row.creditCards.split(',') : []"/>
           </template>
         </el-table-column>
-        <el-table-column label="酒店设施列表" align="center" prop="facilities" />
-        <el-table-column label="酒店地址" align="center" prop="address" :show-overflow-tooltip="true" />
-        <el-table-column label="酒店英文地址" align="center" prop="addressEn" />
+        <!--<el-table-column label="酒店设施列表" align="center" prop="facilities" />-->
+        <!--<el-table-column label="酒店英文地址" align="center" prop="addressEn" />
         <el-table-column label="创建人" align="center" prop="createBy" />
         <el-table-column label="创建时间" align="center" prop="createTime" width="180">
           <template #default="scope">
@@ -182,14 +182,14 @@
           <template #default="scope">
             <span>{{ parseTime(scope.row.updateTime, '{y}-{m}-{d}') }}</span>
           </template>
-        </el-table-column>
+        </el-table-column>-->
         <!--<el-table-column label="高德经度" align="center" prop="gaodeLat" />-->
         <!--<el-table-column label="高德维度" align="center" prop="gaodeLon" />-->
         <!--<el-table-column label="谷歌经度" align="center" prop="googleLat" />-->
         <!--<el-table-column label="谷歌维度" align="center" prop="googleLon" />-->
         <!--<el-table-column label="百度经度" align="center" prop="baiduLat" />-->
         <!--<el-table-column label="百度维度" align="center" prop="baiduLon" />-->
-        <el-table-column label="目的地标签" align="center" prop="destinationLabel" />
+        <!--<el-table-column label="目的地标签" align="center" prop="destinationLabel" />-->
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
           <template #default="scope">
             <el-tooltip content="修改" placement="top">
@@ -199,7 +199,7 @@
               <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['hmis:hotel:remove']"></el-button>
             </el-tooltip>
             <el-tooltip content="详细" placement="top">
-              <el-button link type="primary" icon="View" @click="handleView(scope.row)" v-hasPermi="['monitor:operlog:query']"> </el-button>
+              <el-button link type="primary" icon="View" @click="handleView(scope.row)" v-hasPermi="['hmis:hotel:query']"> </el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -215,7 +215,7 @@
     </el-card>
     <!-- 添加或修改酒店详情对话框 -->
     <el-dialog :title="dialog.title" v-model="dialog.visible" width="500px" append-to-body>
-      <el-form ref="hotelFormRef" :model="form" :rules="rules" label-width="80px">
+      <el-form v-if="dialog.title == '添加酒店详情' || dialog.title == '修改酒店详情'" ref="hotelFormRef" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="酒店名称" prop="hotelName" required>
           <el-input v-model="form.hotelName" placeholder="请输入酒店名称" />
         </el-form-item>
@@ -279,13 +279,7 @@
         <el-form-item label="酒店英文地址" prop="addressEn">
           <el-input v-model="form.addressEn" placeholder="请输入酒店英文地址" />
         </el-form-item>
-        <el-form-item label="高德经度" prop="gaodeLat">
-          <el-input v-model="form.gaodeLat" placeholder="请输入高德经度" />
-        </el-form-item>
-        <el-form-item label="高德维度" prop="gaodeLon">
-          <el-input v-model="form.gaodeLon" placeholder="请输入高德维度" />
-        </el-form-item>
-        <el-form-item label="创建人" prop="createBy">
+        <!--<el-form-item label="创建人" prop="createBy">
           <el-input v-model="form.createBy" placeholder="请输入创建人" />
         </el-form-item>
         <el-form-item label="创建时间" prop="createTime">
@@ -306,6 +300,12 @@
             value-format="YYYY-MM-DD HH:mm:ss"
             placeholder="请选择修改时间">
           </el-date-picker>
+        </el-form-item>-->
+        <el-form-item label="高德经度" prop="gaodeLat">
+          <el-input v-model="form.gaodeLat" placeholder="请输入高德经度" />
+        </el-form-item>
+        <el-form-item label="高德维度" prop="gaodeLon">
+          <el-input v-model="form.gaodeLon" placeholder="请输入高德维度" />
         </el-form-item>
         <el-form-item label="谷歌经度" prop="googleLat">
           <el-input v-model="form.googleLat" placeholder="请输入谷歌经度" />
@@ -323,9 +323,134 @@
           <el-input v-model="form.destinationLabel" placeholder="请输入目的地标签" />
         </el-form-item>
       </el-form>
+
+      <el-form :model="form" label-width="100px">
+        <el-row v-if="dialog.title == '查看酒店详情'">
+          <el-col :span="24">
+            <el-form-item label="酒店名称">
+              {{ form.hotelName }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="英文名">
+              {{ form.hotelNameEn }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="城市名称">
+              {{ form.cityName }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="星级(1/2/3/4/5)">
+              {{ form.star }}
+            </el-form-item>
+              </el-col>
+            <el-col :span="24">
+              <el-form-item label="电话">
+                {{ form.hotelPhone }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="开业时间">
+                {{ form.openingTime}}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24" label="装修时间">
+              {{form.decorateTime}}
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="酒店介绍">
+                {{ form.introduction }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="取消政策">
+                {{ form.canclePolicy }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="支持的信用卡">
+               {{ form.creditCards}}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="酒店设施列表">
+                {{ form.facilities }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="酒店地址">
+                {{ form.address }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="酒店英文地址">
+                {{ form.addressEn }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="创建人">
+                {{ form.createBy }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="创建时间">
+                {{ form.createTime}}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="修改人">
+                {{ form.updateBy }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="修改时间">
+                {{ form.updateTime}}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="高德经度">
+                {{ form.gaodeLat }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="高德维度">
+                {{ form.gaodeLon }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="谷歌经度">
+                {{ form.googleLat }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="谷歌维度">
+                {{ form.googleLon }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="百度经度">
+                {{ form.baiduLat }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="百度维度">
+                {{ form.baiduLon }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="目的地标签">
+                {{ form.destinationLabel }}
+              </el-form-item>
+            </el-col>
+
+
+        </el-row>
+      </el-form>
       <template #footer>
         <div class="dialog-footer">
-          <el-button :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>
+          <el-button v-if="dialog.title != '查看酒店详情'" :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>
           <el-button @click="cancel">取 消</el-button>
         </div>
       </template>
@@ -336,7 +461,6 @@
 <script setup name="Hotel" lang="ts">
 import { listHotel, getHotel, delHotel, addHotel, updateHotel } from '@/api/hmis/hotel';
 import { HotelVO, HotelQuery, HotelForm } from '@/api/hmis/hotel/types';
-import {getTree} from "@/api/demo/tree";
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 const { star_type, credit_card_type } = toRefs<any>(proxy?.useDict('star_type', 'credit_card_type'));
@@ -494,6 +618,16 @@ const handleUpdate = async (row?: HotelVO) => {
   dialog.title = "修改酒店详情";
 }
 
+/** 详细按钮操作 */
+const handleView = async (row?: HotelVO) => {
+  const _hotelId = row?.hotelId || ids.value[0]
+  const res = await getHotel(_hotelId);
+  Object.assign(form.value, res.data);
+  form.value.creditCards = form.value.creditCards.split(",");
+  dialog.visible = true;
+  dialog.title = "查看酒店详情";
+}
+
 /** 提交按钮 */
 const submitForm = () => {
   hotelFormRef.value?.validate(async (valid: boolean) => {
@@ -527,17 +661,6 @@ const handleExport = () => {
     ...queryParams.value
   }, `hotel_${new Date().getTime()}.xlsx`)
 }
-
-/** 详细按钮操作 */
-const handleView = async (row: HotelVO) => {
-  reset();
-  const res = await getHotel(row.hotelId);
-  Object.assign(form.value, res.data);
-  dialog.visible = true;
-  // 禁止表单编辑
-  dialog.title = "查看酒店详情";
-}
-
 
 onMounted(() => {
   getList();
