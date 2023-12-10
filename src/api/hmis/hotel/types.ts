@@ -1,5 +1,9 @@
 export interface HotelVO {
   /**
+   * 酒店编号
+   */
+  hotelId: string | number;
+  /**
    * 酒店名称
    */
   hotelName: string;
