@@ -356,9 +356,11 @@
                 {{ form.openingTime}}
               </el-form-item>
             </el-col>
-            <el-col :span="24" label="装修时间">
-              {{form.decorateTime}}
-            </el-col>
+          <el-col :span="24">
+            <el-form-item label="装修时间">
+              {{ form.decorateTime}}
+            </el-form-item>
+          </el-col>
             <el-col :span="24">
               <el-form-item label="酒店介绍">
                 {{ form.introduction }}
@@ -622,6 +624,17 @@ const handleUpdate = async (row?: HotelVO) => {
 const handleView = async (row?: HotelVO) => {
   const _hotelId = row?.hotelId || ids.value[0]
   const res = await getHotel(_hotelId);
+  // 词典获取 star 字段类型和 creditCards 字段类型, 转换为 label
+  star_type.value.forEach((item: any) => {
+    if (item.value == res.data.star) {
+      res.data.star = item.label;
+    }
+  });
+  credit_card_type.value.forEach((item: any) => {
+    if (res.data.creditCards.includes(item.value)) {
+      res.data.creditCards = res.data.creditCards.replace(item.value, item.label);
+    }
+  });
   Object.assign(form.value, res.data);
   form.value.creditCards = form.value.creditCards.split(",");
   dialog.visible = true;
