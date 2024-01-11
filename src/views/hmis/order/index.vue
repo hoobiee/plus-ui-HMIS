@@ -101,6 +101,7 @@
       <el-table v-loading="loading" :data="orderList" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="订单ID" align="center" prop="orderId" v-if="true" />
+        <el-table-column label="客户" align="center" prop="ordGuestVo.firstName" />
         <el-table-column label="订单编号" align="center" prop="orderNo" />
         <el-table-column label="渠道订单号" align="center" prop="channelNo" />
         <el-table-column label="供货单编号" align="center" prop="supplyOrderNo" />
